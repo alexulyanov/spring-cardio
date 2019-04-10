@@ -18,7 +18,7 @@ enum Gender{
 @Getter @Setter
 class Person implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "first_name")
