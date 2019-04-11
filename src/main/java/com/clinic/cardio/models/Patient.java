@@ -7,6 +7,8 @@ import org.springframework.core.style.ToStringCreator;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 
 enum Province{
     BC, ON, QC
@@ -27,7 +29,7 @@ public class Patient extends Person {
 
     @Column(name = "province")
     @Enumerated(EnumType.STRING)
-    @NotEmpty
+    @NotNull
     private Province province;
 
     @Column(name = "mobile_phone")
@@ -35,10 +37,12 @@ public class Patient extends Person {
     @Digits(fraction = 0, integer = 10)
     private String mobilePhone;
 
+
+
     @Override
     public String toString() {
         return new ToStringCreator(this)
-                .append("id", this.getId())
+                .append("id", this.getId()).append("new", this.isNew())
                 .append("lastName", this.getLastName())
                 .append("firstName", this.getFirstName())
                 .append("gender", this.getGender())

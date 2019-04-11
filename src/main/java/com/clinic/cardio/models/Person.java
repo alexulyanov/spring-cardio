@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 enum Gender{
     MALE, FEMALE
@@ -30,13 +31,16 @@ class Person implements Serializable {
     private String lastName;
 
     @Enumerated(EnumType.STRING)
-    @NotEmpty
+    @NotNull
     private Gender gender;
 
     @Column(name = "date_of_birth")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @NotEmpty
+    @NotNull
     private LocalDate birthDate;
 
+    public boolean isNew() {
+        return this.id == null;
+    }
 
 }
