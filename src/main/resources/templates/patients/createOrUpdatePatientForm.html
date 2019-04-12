@@ -13,9 +13,9 @@
       <input
         th:replace="~{fragments/inputField :: input ('Birth Date', 'birthDate', 'date')}" />
       <input
-        th:replace="~{fragments/selectField :: select ('Province', 'province', ${T(com.clinic.cardio.models.Gender).values()}) }" />
+        th:replace="~{fragments/selectField :: select ('Province', 'province', ${T(com.clinic.cardio.models.Province).values()}) }" />
       <input
-        th:replace="~{fragments/selectField :: select ('Gender', 'gender', ${T(com.clinic.cardio.models.Province).values()}) }" />
+        th:replace="~{fragments/selectField :: select ('Gender', 'gender', ${T(com.clinic.cardio.models.Gender).values()}) }" />
       <input
         th:replace="~{fragments/inputField :: input ('Address', 'address', 'text')}" />
       <input
