@@ -18,7 +18,6 @@ import java.util.Optional;
 
 @Controller
 public class PatientController {
-//    TODO: Add view(html)
     private static final String VIEWS_PATIENT_CREATE_OR_UPDATE_FORM = "patients/createOrUpdatePatientForm";
     private final PatientRepository patientRepository;
 
