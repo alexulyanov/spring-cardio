@@ -3,12 +3,10 @@ package com.clinic.cardio.controllers;
 import com.clinic.cardio.models.Patient;
 import com.clinic.cardio.repositories.PatientRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -94,6 +92,24 @@ public class PatientController {
 //        this.patientRepository.findById(patientId).ifPresentOrElse(patient -> mav.addObject(patient), () -> logger.error("..."));
 
         return mav;
+    }
+
+    @GetMapping("/patients/{patientId}/edit")
+    public String initUpdatePatientForm(@PathVariable("patientId") Long patientId, Model model) {
+        Optional<Patient> patient = this.patientRepository.findById(patientId);
+        patient.ifPresent(value -> model.addAttribute("patient", value));
+        return VIEWS_PATIENT_CREATE_OR_UPDATE_FORM;
+    }
+
+    @PostMapping("/patients/{patientId}/edit")
+    public String processUpdatePatientForm(@Valid Patient patient, BindingResult result, @PathVariable("patientId") Long patientId) {
+        if (result.hasErrors()) {
+            return VIEWS_PATIENT_CREATE_OR_UPDATE_FORM;
+        } else {
+            patient.setId(patientId);
+            this.patientRepository.save(patient);
+            return "redirect:/patients/{patientId}";
+        }
     }
 
 }
