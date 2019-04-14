@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.*;
@@ -17,11 +16,7 @@ enum Gender{
 
 @MappedSuperclass
 @Getter @Setter
-class Person implements Serializable {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
-
+public class Person extends BaseEntity {
     @Column(name = "first_name")
     @NotEmpty
     private String firstName;
@@ -39,8 +34,5 @@ class Person implements Serializable {
     @NotNull
     private LocalDate birthDate;
 
-    public boolean isNew() {
-        return this.id == null;
-    }
 
 }
