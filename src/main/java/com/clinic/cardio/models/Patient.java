@@ -2,12 +2,15 @@ package com.clinic.cardio.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.support.MutableSortDefinition;
+import org.springframework.beans.support.PropertyComparator;
 import org.springframework.core.style.ToStringCreator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.*;
 
 
 enum Province{
@@ -37,7 +40,53 @@ public class Patient extends Person {
     @Digits(fraction = 0, integer = 10)
     private String mobilePhone;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "patient")
+    private Set<EchoTest> echoTests;
 
+    protected Set<EchoTest> getEchoTestsInternal() {
+        if (this.echoTests == null) {
+            this.echoTests = new HashSet<>();
+        }
+        return this.echoTests;
+    }
+
+    protected void setEchoTestsInternal(Set<EchoTest> echoTests) {
+        this.echoTests = echoTests;
+    }
+
+    public List<EchoTest> getEchoTests() {
+        List<EchoTest> sortedEchoTests= new ArrayList<>(getEchoTestsInternal());
+        PropertyComparator.sort(sortedEchoTests,
+                new MutableSortDefinition("visitDate", true, true));
+        return Collections.unmodifiableList(sortedEchoTests);
+    }
+
+    public void addEchoTest(EchoTest echoTest) {
+        if (echoTest.isNew()) {
+            getEchoTestsInternal().add(echoTest);
+        }
+        echoTest.setPatient(this);
+    }
+
+    // TODO: Change attribute
+    public EchoTest getEchoTest(String name) {
+        return getEchoTest(name, false);
+    }
+
+
+    public EchoTest getEchoTest(String name, boolean ignoreNew) {
+        name = name.toLowerCase();
+        for (EchoTest echoTest : getEchoTestsInternal()) {
+            if (!ignoreNew || !echoTest.isNew()) {
+                String compName = echoTest.getName();
+                compName = compName.toLowerCase();
+                if (compName.equals(name)) {
+                    return echoTest;
+                }
+            }
+        }
+        return null;
+    }
 
     @Override
     public String toString() {
