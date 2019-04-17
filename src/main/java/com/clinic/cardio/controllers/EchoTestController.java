@@ -33,12 +33,12 @@ public class EchoTestController {
     }
 
     @InitBinder("patient")
-    public void initOwnerBinder(WebDataBinder dataBinder) {
+    public void initPatientBinder(WebDataBinder dataBinder) {
         dataBinder.setDisallowedFields("id");
     }
 
     @InitBinder("echotest")
-    public void initPetBinder(WebDataBinder dataBinder) { }
+    public void initEchoTestBinder(WebDataBinder dataBinder) { }
 
     @GetMapping("/echotests/new")
     public String initCreationForm(Patient patient, ModelMap model) {
@@ -48,7 +48,7 @@ public class EchoTestController {
         return VIEWS_ECHOTESTS_CREATE_OR_UPDATE_FORM;
     }
 
-    @PostMapping("/pets/new")
+    @PostMapping("/echotests/new")
     public String processCreationForm(Patient patient, @Valid EchoTest echoTest, BindingResult result, ModelMap model) {
         if (StringUtils.hasLength(echoTest.getName()) && echoTest.isNew() && patient.getEchoTest(echoTest.getName(), true) != null){
             result.rejectValue("name", "duplicate", "already exists");
@@ -58,6 +58,26 @@ public class EchoTestController {
             model.put("echoTest", echoTest);
             return VIEWS_ECHOTESTS_CREATE_OR_UPDATE_FORM;
         } else {
+            this.echoTestRepository.save(echoTest);
+            return "redirect:/patients/{patientId}";
+        }
+    }
+
+    @GetMapping("/echotests/{echoTestId}/edit")
+    public String initUpdateForm(@PathVariable("echoTestId") Long echoTestId, ModelMap model) {
+        Optional<EchoTest> echoTest = this.echoTestRepository.findById(echoTestId);
+        echoTest.ifPresent(test -> model.put("echoTest", test));
+        return VIEWS_ECHOTESTS_CREATE_OR_UPDATE_FORM;
+    }
+
+    @PostMapping("/echotests/{echoTestId}/edit")
+    public String processUpdateForm(@Valid EchoTest echoTest, BindingResult result, Patient patient, ModelMap model) {
+        if (result.hasErrors()) {
+            echoTest.setPatient(patient);
+            model.put("echoTest", echoTest);
+            return VIEWS_ECHOTESTS_CREATE_OR_UPDATE_FORM;
+        } else {
+            patient.addEchoTest(echoTest);
             this.echoTestRepository.save(echoTest);
             return "redirect:/patients/{patientId}";
         }
