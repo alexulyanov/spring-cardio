@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+<body>
+<div class="ui container">
+    <form class="ui form">
+        <h4 class="ui top attached block header">
+            Measurements
+        </h4>
+        <div class="ui bottom attached segment">
+            <div class="fields">
+                <div class='two wide field'>
+                    <div class='ui labeled input'>
+                        <div class='ui label'>RV:</div>
+                        <input type="text" class="" />
+                    </div>
+                </div>
+                <div class='two wide field'>
+                    <div class='ui labeled input'>
+                        <div class='ui label'>AO:</div>
+                        <input type="text" class="" />
+                    </div>
+                </div>
+                <div class='two wide field'>
+                    <div class='ui labeled input'>
+                        <div class='ui label'>LA:</div>
+                        <input type="text" class="" />
+                    </div>
+                </div>
+                <div class='two wide field'>
+                    <div class='ui labeled input'>
+                        <div class='ui label'>LVS:</div>
+                        <input type="text" class="" />
+                    </div>
+                </div>
+                <div class='two wide field'>
+                    <div class='ui labeled input'>
+                        <div class='ui label'>LVD:</div>
+                        <input type="text" class="" />
+                    </div>
+                </div>
+                <div class='two wide field'>
+                    <div class='ui labeled input'>
+                        <div class='ui label'>SEPT:</div>
+                        <input type="text" class="" />
+                    </div>
+                </div>
+                <div class='two wide field'>
+                    <div class='ui labeled input'>
+                        <div class='ui label'>PW:</div>
+                        <input type="text" class="" />
+                    </div>
+                </div>
+                <div class='two wide field'>
+                    <button class="ui button fluid">Go to</button>
+                </div>
+            </div>
+        </div>
+        <div class="ui top attached four item tabular menu">
+            <a class="item" data-tab="general">General</a>
+            <a class="item active" data-tab="echo">ECHO Test</a>
+            <a class="item" data-tab="wall">Wall Motion</a>
+            <a class="item" data-tab="comments">Comments</a>
+        </div>
+        <div class="ui bottom attached segment tab" data-tab="general">
+            Segment1
+        </div>
+        <div class="ui bottom attached segment tab active" data-tab="echo">
+            <h4 class="ui top attached block header">Left Ventricle</h4>
+            <div class="ui bottom attached segment">
+                <div class="fields">
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>Grade:</div>
+                            <select class="ui labeled dropdown">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>LVH:</div>
+                            <select class="ui dropdown">
+                                <option value="Concentric">Concentric</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>LVD:</div>
+                            <select class="ui dropdown">
+                                <option value="Normal">Normal</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='two wide field'>
+                        <div class='ui right labeled input'>
+                            <div class='ui label'>EF:</div>
+                            <input type="text" class="" />
+                            <div class='ui label basic'>%</div>
+                        </div>
+                    </div>
+                    <div class='two wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>CO:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="fields">
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>E/A:</div>
+                            <input type="text" class="" />
+                            <div class='ui label basic'>/</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui right labeled input'>
+                            <div class='ui label'>DT:</div>
+                            <input type="text" class="" />
+                            <div class='ui label basic'>ms</div>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>IVRT:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>Diast F</div>
+                            <select class="ui dropdown">
+                                <option value="long value">long value</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui fluid labeled input">
+                    <div class='ui label'>Comments:</div>
+                    <input type="text">
+                </div>
+            </div>
+            <h4 class="ui top attached block header">Aortic Valve</h4>
+            <div class="ui bottom attached segment">
+                <div class="fields">
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>AV:</div>
+                            <select class="ui dropdown">
+                                <option value="Mild/Thick">Mild/Thick</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>P &frac12; t:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>AI:</div>
+                            <select class="ui dropdown">
+                                <option value="Mild">Mild</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>AS:</div>
+                            <select class="ui dropdown">
+                                <option value="None">None</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>AVA:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class='three wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>AORTA:</div>
+                            <select class="ui dropdown compact">
+                                <option value="Normal">Normal</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='three wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>LVOT diam:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                    <div class='three wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>PG:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                    <div class='three wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>MG:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                    <div class='three wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>V1:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                    <div class='three wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>V2:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="ui fluid labeled input">
+                    <div class='ui label'>Comments:</div>
+                    <input type="text">
+                </div>
+            </div>
+            <h4 class="ui top attached block header">Mitral Valve</h4>
+            <div class="ui bottom attached segment">
+                <div class="fields">
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>MV:</div>
+                            <select class="ui dropdown">
+                                <option value="Mild/Thick">Mild/Thick</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>MR:</div>
+                            <select class="ui dropdown">
+                                <option value="Mild">Mild</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>P &frac12; t:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>MG:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>MVP:</div>
+                            <select class="ui dropdown">
+                                <option value="None">None</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>MS:</div>
+                            <select class="ui dropdown">
+                                <option value="None">None</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>MVA:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>PG:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="ui fluid labeled input">
+                    <div class='ui label'>Comments:</div>
+                    <input type="text">
+                </div>
+            </div>
+            <h4 class="ui top attached block header">Tricuspid/Pulmonic Valves</h4>
+            <div class="ui bottom attached segment">
+                <div class="fields">
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>TV:</div>
+                            <select class="ui dropdown">
+                                <option value="Normal">Normal</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>TR:</div>
+                            <select class="ui dropdown">
+                                <option value="Mild">Mild</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui right labeled input'>
+                            <div class='ui label'>RVSP:</div>
+                            <input type="text" class="" />
+                            <div class='ui label basic'>mm/Hg</div>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>PUL</div>
+                            <select class="ui dropdown">
+                                <option value="Mild">Mild</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>PV:</div>
+                            <select class="ui dropdown">
+                                <option value="Normal">Normal</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>PS:</div>
+                            <select class="ui dropdown">
+                                <option value="None">None</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>PI:</div>
+                            <select class="ui dropdown">
+                                <option value="None">None</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>Pulmonic PG:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>Pulmonic MG:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="ui fluid labeled input">
+                    <div class='ui label'>Comments:</div>
+                    <input type="text">
+                </div>
+            </div>
+
+            <div class="ui segment">
+                <div class="fields">
+
+                </div>
+                <div class="ui fluid labeled input">
+                    <div class='ui label'>Comments:</div>
+                    <input type="text">
+                </div>
+            </div>
+
+        </div>
+        <div class="ui bottom attached segment tab" data-tab="wall">
+            Segment3
+        </div>
+        <div class="ui bottom attached segment tab" data-tab="comments">
+            Segment4
+        </div>
+        <form>
+            <script>
+                $('.tabular.menu .item').tab();
+                $('.ui.dropdown').dropdown();
+            </script>
+</div>
+</body>
