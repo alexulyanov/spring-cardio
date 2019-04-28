@@ -14,7 +14,19 @@ import java.util.*;
 
 
 enum Province{
-    BC, ON, QC
+    BC("BC"),
+    ON("ON"),
+    QC("QC");
+
+    private final String displayName;
+
+    Province(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
 }
 
 @Entity
