@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<!--<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/navbar :: layout (~{::body},'patients')}">-->
+<html xmlns:th="https://www.thymeleaf.org">
+
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script
@@ -8,11 +11,13 @@
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 </head>
+
 <body>
 <div class="ui container">
-    <form class="ui form">
+    <form th:object="${echoTest}" class="ui form" method="post">
+        <input type="hidden" name="id" th:value="*{id}" />
         <h4 class="ui top attached block header">
-            Measurements
+            Measurements:<span th:text="${echoTest.patient?.firstName + ' ' + echoTest.patient?.lastName}" />
         </h4>
         <div class="ui bottom attached segment">
             <div class="fields">
@@ -79,37 +84,43 @@
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>Grade:</div>
-                            <select class="ui labeled dropdown">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'grades', ${T(com.clinic.cardio.models.EchoTestEnums.GRADES).values()}) }" />
+<!--                            <select class="ui labeled dropdown">-->
+<!--                                <option value="0">0</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>LVH:</div>
-                            <select class="ui dropdown">
-                                <option value="Concentric">Concentric</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'lvh', ${T(com.clinic.cardio.models.EchoTestEnums.LVH).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="Concentric">Concentric</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>LVD:</div>
-                            <select class="ui dropdown">
-                                <option value="Normal">Normal</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'lvd', ${T(com.clinic.cardio.models.EchoTestEnums.LVD).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="Normal">Normal</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='two wide field'>
@@ -152,13 +163,15 @@
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>Diast F</div>
-                            <select class="ui dropdown">
-                                <option value="long value">long value</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'diasfunc', ${T(com.clinic.cardio.models.EchoTestEnums.DIASFUNC).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="long value">long value</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                 </div>
@@ -173,13 +186,15 @@
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>AV:</div>
-                            <select class="ui dropdown">
-                                <option value="Mild/Thick">Mild/Thick</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'av', ${T(com.clinic.cardio.models.EchoTestEnums.AV).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="Mild/Thick">Mild/Thick</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
@@ -191,25 +206,29 @@
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>AI:</div>
-                            <select class="ui dropdown">
-                                <option value="Mild">Mild</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'ai', ${T(com.clinic.cardio.models.EchoTestEnums.AI).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="Mild">Mild</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>AS:</div>
-                            <select class="ui dropdown">
-                                <option value="None">None</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'asav', ${T(com.clinic.cardio.models.EchoTestEnums.ASAV).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="None">None</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
@@ -223,13 +242,15 @@
                     <div class='three wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>AORTA:</div>
-                            <select class="ui dropdown compact">
-                                <option value="Normal">Normal</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'aorta', ${T(com.clinic.cardio.models.EchoTestEnums.AORTA).values()}) }" />
+<!--                            <select class="ui dropdown compact">-->
+<!--                                <option value="Normal">Normal</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='three wide field'>
@@ -275,25 +296,29 @@
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>MV:</div>
-                            <select class="ui dropdown">
-                                <option value="Mild/Thick">Mild/Thick</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'mv', ${T(com.clinic.cardio.models.EchoTestEnums.MV).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="Mild/Thick">Mild/Thick</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>MR:</div>
-                            <select class="ui dropdown">
-                                <option value="Mild">Mild</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'mr', ${T(com.clinic.cardio.models.EchoTestEnums.MR).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="Mild">Mild</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
@@ -313,25 +338,29 @@
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>MVP:</div>
-                            <select class="ui dropdown">
-                                <option value="None">None</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'mvp', ${T(com.clinic.cardio.models.EchoTestEnums.MVP).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="None">None</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>MS:</div>
-                            <select class="ui dropdown">
-                                <option value="None">None</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'ms', ${T(com.clinic.cardio.models.EchoTestEnums.MS).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="None">None</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
@@ -358,25 +387,29 @@
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>TV:</div>
-                            <select class="ui dropdown">
-                                <option value="Normal">Normal</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'tv', ${T(com.clinic.cardio.models.EchoTestEnums.TV).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="Normal">Normal</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>TR:</div>
-                            <select class="ui dropdown">
-                                <option value="Mild">Mild</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                                <input
+                                        th:replace="~{fragments/selectField :: select ('', 'tr', ${T(com.clinic.cardio.models.EchoTestEnums.TR).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="Mild">Mild</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
@@ -388,14 +421,16 @@
                     </div>
                     <div class='four wide field'>
                         <div class='ui labeled input'>
-                            <div class='ui label'>PUL</div>
-                            <select class="ui dropdown">
-                                <option value="Mild">Mild</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <div class='ui label'>PUL:</div>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'pulhyp', ${T(com.clinic.cardio.models.EchoTestEnums.PULHYP).values()}) }" />
+                            <!--                            <select class="ui dropdown">-->
+                            <!--                                <option value="Mild">Mild</option>-->
+                            <!--                                <option value="1">1</option>-->
+                            <!--                                <option value="2">2</option>-->
+                            <!--                                <option value="3">3</option>-->
+                            <!--                                <option value="4">4</option>-->
+                            <!--                            </select>-->
                         </div>
                     </div>
                 </div>
@@ -403,37 +438,43 @@
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>PV:</div>
-                            <select class="ui dropdown">
-                                <option value="Normal">Normal</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'pv', ${T(com.clinic.cardio.models.EchoTestEnums.PV).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="Normal">Normal</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>PS:</div>
-                            <select class="ui dropdown">
-                                <option value="None">None</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'ps', ${T(com.clinic.cardio.models.EchoTestEnums.PS).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="None">None</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>PI:</div>
-                            <select class="ui dropdown">
-                                <option value="None">None</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                            <input
+                                    th:replace="~{fragments/selectField :: select ('', 'pi', ${T(com.clinic.cardio.models.EchoTestEnums.PI).values()}) }" />
+<!--                            <select class="ui dropdown">-->
+<!--                                <option value="None">None</option>-->
+<!--                                <option value="1">1</option>-->
+<!--                                <option value="2">2</option>-->
+<!--                                <option value="3">3</option>-->
+<!--                                <option value="4">4</option>-->
+<!--                            </select>-->
                         </div>
                     </div>
                     <div class='four wide field'>
@@ -473,7 +514,8 @@
         <div class="ui bottom attached segment tab" data-tab="comments">
             Segment4
         </div>
-        <form>
+        </div>
+        </form>
             <script>
                 $('.tabular.menu .item').tab();
                 $('.ui.dropdown').dropdown();
