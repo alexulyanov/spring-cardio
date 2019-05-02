@@ -42,6 +42,11 @@ public class EchoTest extends BaseEntity{
     @NotNull
     private AORTA aorta;
 
+    @Column(name = "ASAV")
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private ASAV asav;
+
     @Column(name = "AV")
     @Enumerated(EnumType.STRING)
     @NotNull
