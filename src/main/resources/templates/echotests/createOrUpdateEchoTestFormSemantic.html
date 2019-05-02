@@ -506,7 +506,7 @@
                     <input type="text">
                 </div>
             </div>
-
+<!--TODO: LAST SECTION OF ECHO TEST-->
         </div>
         <div class="ui bottom attached segment tab" data-tab="wall">
             Segment3
@@ -514,11 +514,18 @@
         <div class="ui bottom attached segment tab" data-tab="comments">
             Segment4
         </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button
+                        th:with="text=${echoTest['new']} ? 'Add EchoTest' : 'Update EchoTest'"
+                        class="btn btn-default" type="submit" th:text="${text}">Add
+                    EchoTest</button>
+            </div>
         </div>
-        </form>
             <script>
                 $('.tabular.menu .item').tab();
                 $('.ui.dropdown').dropdown();
             </script>
+    </form>
 </div>
 </body>
