@@ -17,7 +17,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/patients/{patientId}")
 public class EchoTestController {
-    private static final String VIEWS_ECHOTESTS_CREATE_OR_UPDATE_FORM = "echotests/createOrUpdateEchoTestForm";
+    private static final String VIEWS_ECHOTESTS_CREATE_OR_UPDATE_FORM = "echotests/createOrUpdateEchoTestFormSemantic";
     private final EchoTestRepository echoTestRepository;
     private final PatientRepository patientRepository;
 
