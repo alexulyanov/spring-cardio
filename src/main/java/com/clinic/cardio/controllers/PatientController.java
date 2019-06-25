@@ -58,7 +58,7 @@ public class PatientController {
         if (patient.getLastName() == null || patient.getLastName().equals("")) {
             results = this.patientRepository.findAll();
         } else {
-            results = this.patientRepository.findByLastName(patient.getLastName());
+            results = this.patientRepository.findByOhip(patient.getOhip());
         }
 
         // find patients by last name

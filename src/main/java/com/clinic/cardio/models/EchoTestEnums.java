@@ -5,9 +5,9 @@ public class EchoTestEnums {
     enum AI {
         MILD("Mild", "Mild aortic regurgitation."),
         MILD_MODERATE("Mild-Moderate", "Mild to moderate aortic regurgitation."),
-        MODERATE("Moderate aortic regurgitation.", "Moderate"),
-        MODERATE_SEVERE("Moderate to severe aortic regurgitation.", "Moderate-Severe"),
-        NONE("No aortic regurgitation.", "None"),
+        MODERATE("Moderate", "Moderate aortic regurgitation."),
+        MODERATE_SEVERE("Moderate-Severe", "Moderate to severe aortic regurgitation."),
+        NONE("None", "No aortic regurgitation."),
         SEVERE("Severe", "Severe aortic regurgitation."),
         SEVERE_REVERSAL("Severe-Reversal", "Severe aortic regurgitation with flow reversal in descending aorta."),
         TRACE("Trace", "Trace aortic regurgitation."),

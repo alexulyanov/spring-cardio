@@ -10,7 +10,8 @@
         <label class="col-sm-2 control-label" th:text="${label}">Label</label>
 
         <div class="col-sm-10">
-          <select th:field="*{__${name}__}">
+          <select th:field="*{__${name}__}" class="ui dropdown">
+            <option th:value="${''}">Not Selected</option>
             <option th:each="item : ${items}" th:value="${item}"
               th:text="${item.displayName}"></option>
           </select>
