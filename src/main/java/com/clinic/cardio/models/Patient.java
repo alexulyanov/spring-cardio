@@ -34,7 +34,8 @@ public class Patient extends Person {
 
     @Column(name = "OHIP")
     @NotEmpty
-    private String OHIP;
+    @Digits(fraction = 0, integer = 10)
+    private String ohip;
 
     @Column(name = "address")
     @NotEmpty
@@ -50,9 +51,8 @@ public class Patient extends Person {
     private Province province;
 
     @Column(name = "postal_code")
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    private Province postalCode;
+    @NotEmpty
+    private String postalCode;
 
     @Column(name = "mobile_phone")
     @NotEmpty

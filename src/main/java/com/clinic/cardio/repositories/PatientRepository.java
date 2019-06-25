@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface PatientRepository extends CrudRepository<Patient, Long> {
     List<Patient> findAll();
     List<Patient> findByLastName(@Param("lastName") String lastName);
+    List<Patient> findByOhip(@Param("ohip") String ohip);
     Optional<Patient> findById(@Param("id") Long id);
 
 }
