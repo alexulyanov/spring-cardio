@@ -19,11 +19,9 @@ enum Province{
     QC("QC");
 
     private final String displayName;
-
     Province(String displayName) {
         this.displayName = displayName;
     }
-
     public String getDisplayName() {
         return displayName;
     }
@@ -33,6 +31,10 @@ enum Province{
 @Table(name = "patients")
 @Getter @Setter
 public class Patient extends Person {
+
+    @Column(name = "OHIP")
+    @NotEmpty
+    private String OHIP;
 
     @Column(name = "address")
     @NotEmpty
@@ -47,6 +49,11 @@ public class Patient extends Person {
     @NotNull
     private Province province;
 
+    @Column(name = "postal_code")
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private Province postalCode;
+
     @Column(name = "mobile_phone")
     @NotEmpty
     @Digits(fraction = 0, integer = 10)
@@ -55,7 +62,7 @@ public class Patient extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patient")
     private Set<EchoTest> echoTests;
 
-    protected Set<EchoTest> getEchoTestsInternal() {
+    private Set<EchoTest> getEchoTestsInternal() {
         if (this.echoTests == null) {
             this.echoTests = new HashSet<>();
         }
