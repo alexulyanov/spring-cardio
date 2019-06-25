@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.*;
 
 
@@ -52,6 +53,8 @@ public class Patient extends Person {
 
     @Column(name = "postal_code")
     @NotEmpty
+    @Pattern(regexp = "[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ][0-9][ABCEGHJKLMNPRSTVWXYZ][0-9]", message = "" +
+            "Format is \"M0E0E0\"")
     private String postalCode;
 
     @Column(name = "mobile_phone")
