@@ -27,26 +27,27 @@ public class EchoTest extends BaseEntity{
     @Column(name = "description")
     private String description;
 
-    @Column(name = "RV")
-    private String RV;
-    @Column(name = "AO")
-    private String AO;
-    @Column(name = "LA")
-    private String LA;
-    @Column(name = "LVS")
-    private String LVS;
-    @Column(name = "LVD")
-    private String LVD;
-    @Column(name = "SEPT")
-    private String SEPT;
-    @Column(name = "PW")
-    private String PW;
+    @Column(name = "RV_FIELD")
+    private String RV_FIELD;
+    @Column(name = "AO_FIELD")
+    private String AO_FIELD;
+    @Column(name = "LA_FIELD")
+    private String LA_FIELD;
+    @Column(name = "LVS_FIELD")
+    private String LVS_FIELD;
+    @Column(name = "LVD_ENTRY")
+    private String LVD_ENTRY;
+    @Column(name = "SEPT_FIELD")
+    private String SEPT_FIELD;
+    @Column(name = "PW_FIELD")
+    private String PW_FIELD;
+
     @Column(name = "EF")
     private String EF;
-    @Column(name = "E_SLASH")
-    private String E_SLASH;
-    @Column(name = "A_SLASH")
-    private String A_SLASH;
+    @Column(name = "EA_FIRST")
+    private String EA_FIRST;
+    @Column(name = "EA_SECOND")
+    private String EA_SECOND;
     @Column(name = "DT")
     private String DT;
     @Column(name = "IVRT")
