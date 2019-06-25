@@ -6,8 +6,6 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -26,135 +24,170 @@ public class EchoTest extends BaseEntity{
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate visitDate;
 
-//    @NotEmpty
     @Column(name = "description")
     private String description;
+
+    @Column(name = "RV")
+    private String RV;
+    @Column(name = "AO")
+    private String AO;
+    @Column(name = "LA")
+    private String LA;
+    @Column(name = "LVS")
+    private String LVS;
+    @Column(name = "LVD")
+    private String LVD;
+    @Column(name = "SEPT")
+    private String SEPT;
+    @Column(name = "PW")
+    private String PW;
+    @Column(name = "EF")
+    private String EF;
+    @Column(name = "E_SLASH")
+    private String E_SLASH;
+    @Column(name = "A_SLASH")
+    private String A_SLASH;
+    @Column(name = "DT")
+    private String DT;
+    @Column(name = "IVRT")
+    private String IVRT;
+    @Column(name = "COMMENTS_LV")
+    private String COMMENTS_LV;
+    @Column(name = "P_HALF_AV")
+    private String P_HALF_AV;
+    @Column(name = "AVA")
+    private String AVA;
+    @Column(name = "LVOT")
+    private String LVOT;
+    @Column(name = "PG_AV")
+    private String PG_AV;
+    @Column(name = "MG_AV")
+    private String MG_AV;
+    @Column(name = "V1")
+    private String V1;
+    @Column(name = "V2")
+    private String V2;
+    @Column(name = "COMMENTS_AV")
+    private String COMMENTS_AV;
+    @Column(name = "P_HALF_MV")
+    private String P_HALF_MV;
+    @Column(name = "MG_MV")
+    private String MG_MV;
+    @Column(name = "MVA")
+    private String MVA;
+    @Column(name = "PG_MV")
+    private String PG_MV;
+    @Column(name = "COMMENTS_MV")
+    private String COMMENTS_MV;
+    @Column(name = "RVSP")
+    private String RVSP;
+    @Column(name = "PULMONIC_PG")
+    private String PULMONIC_PG;
+    @Column(name = "PULMONIC_MG")
+    private String PULMONIC_MG;
+    @Column(name = "COMMENTS_TPV")
+    private String COMMENTS_TPV;
 
 //  Enum field values
 
     @Column(name = "AI")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private AI ai;
 
     @Column(name = "AORTA")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private AORTA aorta;
 
     @Column(name = "ASAV")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private ASAV asav;
 
     @Column(name = "AV")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private AV av;
 
     @Column(name = "CLOT")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private CLOT clot;
 
     @Column(name = "DIASFUNC")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private DIASFUNC diasfunc;
 
     @Column(name = "GRADES")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private GRADES grades;
 
     @Column(name = "IMAGEQUALITY")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private IMAGEQUALITY imagequality;
 
     @Column(name = "LA")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private LA la;
 
     @Column(name = "LVD")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private LVD lvd;
 
     @Column(name = "LVH")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private LVH lvh;
 
     @Column(name = "MR")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private MR mr;
 
     @Column(name = "MS")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private MS ms;
 
     @Column(name = "MV")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private MV mv;
 
     @Column(name = "MVP")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private MVP mvp;
 
     @Column(name = "PE")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private PE pe;
 
     @Column(name = "PI")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private PI pi;
 
     @Column(name = "PROPHYLAXIS")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private PROPHYLAXIS prophylaxis;
 
     @Column(name = "PS")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private PS ps;
 
     @Column(name = "PULHYP")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private PULHYP pulhyp;
 
     @Column(name = "PV")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private PV pv;
 
     @Column(name = "RA")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private RA ra;
 
     @Column(name = "RV")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private RV rv;
 
     @Column(name = "TR")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private TR tr;
 
     @Column(name = "TV")
     @Enumerated(EnumType.STRING)
-//    @NotNull
     private TV tv;
 
 //  Enum field values END
