@@ -5,6 +5,7 @@ import com.clinic.cardio.repositories.PatientRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,7 +41,12 @@ public class PatientController {
         if (result.hasErrors()) {
             return VIEWS_PATIENT_CREATE_OR_UPDATE_FORM;
         } else {
-            this.patientRepository.save(patient);
+            try {
+                this.patientRepository.save(patient);
+            } catch (Exception e) {
+                result.addError(new FieldError("patient", "ohip", "This OHIP already exists"));
+                return VIEWS_PATIENT_CREATE_OR_UPDATE_FORM;
+            }
             return "redirect:/patients/" + patient.getId();
         }
     }

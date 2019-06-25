@@ -13,6 +13,10 @@ import java.time.LocalDate;
 @Getter @Setter
 public class EchoTest extends BaseEntity{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
     @Column(name = "name")
     private String name;
 
