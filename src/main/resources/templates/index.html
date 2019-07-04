@@ -1,11 +1,124 @@
 <!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/navbar :: layout (~{::body},'patients')}">
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <title>WIP:Home(Index) Page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Prime Cardiology</title>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.4/b-html5-1.5.4/r-2.2.2/sc-1.5.0/datatables.min.css"/>
 </head>
 <body>
-<p>Hello, world!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#">Prime Cardiology</a>
+        <form class="form-horizontal col-md-8" th:object="${patient}" th:action="@{/patients}" method="get" id="search-patient-form">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-secondary active">
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Surname
+                    </label>
+                    <label class="btn btn-outline-secondary">
+                        <input type="radio" name="options" id="option2" autocomplete="off"> OHIP
+                    </label>
+                    <label class="btn btn-outline-secondary ">
+                        <input type="radio" name="options" id="option3" autocomplete="off"> Ref Doctor
+                    </label>
+                    <label class="btn btn-outline-secondary">
+                        <input type="radio" name="options" id="option1" autocomplete="off"> Phone
+                    </label>
+                </div>
+                <input type="text" class="form-control" th:field="*{lastName}" placeholder="Search.." >
+                <button class="btn btn-secondary" type="button" id="button-addon2">Search</button>
+            </div>
+        </form>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Patients</h3>
+            <table class="table table-bordered table-sm">
+                <thead>
+                <tr>
+                    <th>OHIP</th>
+                    <th>Surname</th>
+                    <th>First Name</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Ref Doctor</th>
+                    <th>Phone</th>
+                    <th><button type="button" class="btn btn-sm btn-outline-success">New</button></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="patient : ${selections}">
+                    <td>
+                        <a th:href="@{/patients/__${patient.id}__}" th:text="${patient.firstName + ' ' + patient.lastName}"/></a>
+                    </td>
+                    <td th:text="${patient.id}"/>
+                    <td th:text="${patient.lastName}"/>
+                    <td th:text="${patient.firstName}"/>
+                    <td th:text="${patient.DOB}"/>
+                    <td th:text="${patient.gender}"/>
+                    <td th:text="${patient.refDoctor}"/>
+                    <td th:text="${patient.mobilePhone}"/>
+                    <td>EMPTY</td>
+                </tr>
+                <tr><td>1444433699</td><td>Monseur</td><td>Palmeri</td><td>August 16, 2011</td><td>Female</td><td>Gg, Jean</td><td>9058567325</td><td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i> <i class="fas fa-print"></i></td></tr>
+                <tr class="table-active"><td>1445565318</td><td>Luigina</td><td>Mirabelli</td><td>October 28, 2011</td><td>Female</td><td>Zggsowski, John</td><td>9056567913</td><td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i> <i class="fas fa-print"></i></td></tr>
+                <tr><td>1446760670</td><td>Davisd</td><td>Kondo</td><td>November 6, 2011</td><td>Male</td><td>Wong, Mary</td><td>9058500740</td><td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i> <i class="fas fa-print"></i></td></tr>
+                <tr class="table-active"><td>1446088807</td><td>Mary E.</td><td>Fox</td><td>June 11, 2011</td><td>Female</td><td>Zaresdmgba, Michael</td><td>7054356749</td><td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i> <i class="fas fa-print"></i></td></tr>
+                <tr><td>1447887192</td><td>Annfa</td><td>Papini</td><td>October 8, 2011</td><td>Female</td><td>Di Maria, Antoinette</td><td>9058933851</td><td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i> <i class="fas fa-print"></i></td></tr>
+                <tr class="table-active"><td>1447971746</td><td>Cynthia</td><td>Lewis-Wint</td><td>May 16, 2011</td><td>Female</td><td>Oguerrr, Emmanuel</td><td>6477016748</td><td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i> <i class="fas fa-print"></i></td></tr>
+                <tr><td>1448179174P</td><td>Shirdley</td><td>Dogson</td><td>November 24, 2011</td><td>Female</td><td>Zggowski, John</td><td>9058967679</td><td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i> <i class="fas fa-print"></i></td></tr>
+                <tr class="table-active"><td>1448956076</td><td>Pasolo</td><td>Nigro</td><td>December 20, 2011</td><td>Male</td><td>Zggsowski, John</td><td></td><td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i> <i class="fas fa-print"></i></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Reports</h3>
+            <table class="table table-bordered table-sm">
+                <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>OHIP</th>
+                    <th>Report Date</th>
+                    <th>Location</th>
+                    <th>Doctor</th>
+                    <th>Comments</th>
+                    <th><button type="button" class="btn btn-sm btn-outline-success">New</button></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td><td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i> <i class="fas fa-print"></i></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script></body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.4/b-html5-1.5.4/r-2.2.2/sc-1.5.0/datatables.min.js"></script>
 </body>
 </html>
