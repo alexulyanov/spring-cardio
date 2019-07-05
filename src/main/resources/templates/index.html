@@ -19,33 +19,46 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.4/b-html5-1.5.4/r-2.2.2/sc-1.5.0/datatables.min.css"/>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="#">Prime Cardiology</a>
-        <form class="form-horizontal col-md-8" th:object="${patient}" th:action="@{/patients}" method="get" id="search-patient-form">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-outline-secondary active">
-                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Surname
-                    </label>
-                    <label class="btn btn-outline-secondary">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> OHIP
-                    </label>
-                    <label class="btn btn-outline-secondary ">
-                        <input type="radio" name="options" id="option3" autocomplete="off"> Ref Doctor
-                    </label>
-                    <label class="btn btn-outline-secondary">
-                        <input type="radio" name="options" id="option1" autocomplete="off"> Phone
-                    </label>
-                </div>
-                <input type="text" class="form-control" th:field="*{lastName}" placeholder="Search.." >
-                <button class="btn btn-secondary" type="button" id="button-addon2">Search</button>
-            </div>
-        </form>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="col-md-4 col-sm-2">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="#">Prime Cardiology</a>
+        </div>
+
     </div>
+    <form class="form-horizontal col-md-8 col-sm-10" id="search-patient-form">
+        <div class="input-group">
+            <div class="input-group-prepend btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-outline-secondary active">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked>
+                    Surname
+                </label>
+                <label class="btn btn-outline-secondary">
+                    <input type="radio" name="options" id="option2" autocomplete="off">
+                    <i class="fas fa-id-card navbar-toggler"></i>
+                    <span class="collapse navbar-collapse">OHIP</span>
+                </label>
+                <label class="btn btn-outline-secondary ">
+                    <input type="radio" name="options" id="option3" autocomplete="off">
+                    <span class="navbar-toggler">Ref</span>
+                    <span class="collapse navbar-collapse">Ref Doctor</span>
+                </label>
+                <label class="btn btn-outline-secondary">
+                    <input type="radio" name="options" id="option1" autocomplete="off">
+                    <i class="fas fa-phone navbar-toggler"></i>
+                    <span class="collapse navbar-collapse">Phone</span>
+                </label>
+            </div>
+            <input type="text" class="form-control" placeholder="Search.." >
+            <button class="btn btn-primary rounded-0" type="submit" id="button-addon2">
+                <i class="fas fa-search navbar-toggler"></i>
+                <span class="collapse navbar-collapse">Search</span>
+            </button>
+        </div>
+    </form>
 </nav>
 
 <div class="container-fluid">
@@ -66,19 +79,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="patient : ${selections}">
-                    <td>
-                        <a th:href="@{/patients/__${patient.id}__}" th:text="${patient.firstName + ' ' + patient.lastName}"/></a>
-                    </td>
-                    <td th:text="${patient.id}"/>
-                    <td th:text="${patient.lastName}"/>
-                    <td th:text="${patient.firstName}"/>
-                    <td th:text="${patient.DOB}"/>
-                    <td th:text="${patient.gender}"/>
-                    <td th:text="${patient.refDoctor}"/>
-                    <td th:text="${patient.mobilePhone}"/>
-                    <td>EMPTY</td>
-                </tr>
                 <tr><td>1444433699</td><td>Monseur</td><td>Palmeri</td><td>August 16, 2011</td><td>Female</td><td>Gg, Jean</td><td>9058567325</td><td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i> <i class="fas fa-print"></i></td></tr>
                 <tr class="table-active"><td>1445565318</td><td>Luigina</td><td>Mirabelli</td><td>October 28, 2011</td><td>Female</td><td>Zggsowski, John</td><td>9056567913</td><td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i> <i class="fas fa-print"></i></td></tr>
                 <tr><td>1446760670</td><td>Davisd</td><td>Kondo</td><td>November 6, 2011</td><td>Male</td><td>Wong, Mary</td><td>9058500740</td><td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i> <i class="fas fa-print"></i></td></tr>
@@ -114,11 +114,18 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script></body>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/popper/popper.js}"></script>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.4/b-html5-1.5.4/r-2.2.2/sc-1.5.0/datatables.min.js"></script>
+<script>
+  $("form#search-patient-form").submit(function(event) {
+
+    return false;
+  });
+</script>
 </body>
 </html>
