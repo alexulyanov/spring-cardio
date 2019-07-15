@@ -61,16 +61,16 @@ public class PatientController {
     public String performSearch(Patient patient, BindingResult result, Map<String, Object> model) {
         // allow parameterless GET request for /patients to return all records
         Collection<Patient> results;
-        if (patient.getLastName() == null || patient.getLastName().equals("")) {
+        if (patient.getOhip() == null || patient.getOhip().equals("")) {
             results = this.patientRepository.findAll();
         } else {
             results = this.patientRepository.findByOhip(patient.getOhip());
         }
 
-        // find patients by last name
+        // find patients by ohip
         if (results.isEmpty()) {
             // no patients found
-            result.rejectValue("lastName", "notFound", "not found");
+            result.rejectValue("ohip", "notFound", "not found");
             return "patients/findPatients";
         } else if (results.size() == 1) {
             // 1 patient found
