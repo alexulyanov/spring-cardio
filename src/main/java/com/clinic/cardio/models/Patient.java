@@ -1,5 +1,6 @@
 package com.clinic.cardio.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.support.MutableSortDefinition;
@@ -62,6 +63,7 @@ public class Patient extends Person {
     @Digits(fraction = 0, integer = 10)
     private String mobilePhone;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patient")
     private Set<EchoTest> echoTests;
 
