@@ -3,6 +3,7 @@ package com.clinic.cardio.models;
 import com.clinic.cardio.models.EchoTestEnums.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.core.style.ToStringCreator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -13,10 +14,6 @@ import java.time.LocalDate;
 @Getter @Setter
 public class EchoTest extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
     @Column(name = "name")
     private String name;
 
@@ -197,4 +194,9 @@ public class EchoTest extends BaseEntity{
 
 //  Enum field values END
 
+@Override
+    public String toString() {
+        return new ToStringCreator(this)
+                .append("id", this.getId()).append("new", this.isNew()).toString();
+    }
 }
