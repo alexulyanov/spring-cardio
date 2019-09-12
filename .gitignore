@@ -3,6 +3,7 @@ HELP.md
 .mvn
 mvnw
 mvnw.cmd
+cardio_db.trace.*
 
 
 ### IntelliJ IDEA ###
