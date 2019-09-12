@@ -9,4 +9,5 @@ Setting up project:
 Building and running application in Docker:
 * docker build -t <image-tag> 
 * docker run -p 8080:8080 <image-tag>
+
 First time it is going to be slow as it download all of the dependencies.
