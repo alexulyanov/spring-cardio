@@ -34,7 +34,7 @@ enum Province{
 @Getter @Setter
 public class Patient extends Person {
 
-    @Column(name = "OHIP")
+    @Column(name = "OHIP", unique = true)
     @NotEmpty
     @Digits(fraction = 0, integer = 10)
     private String ohip;
