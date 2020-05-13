@@ -64,18 +64,91 @@
             </div>
         </div>
         <div class="ui top attached four item tabular menu">
-            <a class="item" data-tab="general">General</a>
-            <a class="item active" data-tab="echo">ECHO Test</a>
+            <a class="item active" data-tab="general">General</a>
+            <a class="item" data-tab="echo">ECHO Test</a>
             <a class="item" data-tab="wall">Wall Motion</a>
             <a class="item" data-tab="comments">Comments</a>
         </div>
-        <div class="ui bottom attached segment tab" data-tab="general">
-            Segment1
+        <div class="ui bottom attached segment tab active" data-tab="general">
+            <div class="ui two column grid">
+                <div class="column">
+                    <div class="fields">
+                        <div class='nine wide field'>
+                            <div class='ui labeled input'>
+                                <div class='ui label'>Date:</div>
+                                <input type="date">
+                            </div>
+                        </div>                    
+                    </div>
+                    <div class="fields">
+                        <div class='four wide field'>
+                            <div class='ui labeled input'>
+                                <div class='ui label'>Location:</div>
+                                <select class="ui labeled dropdown">
+                                    <option value="0">Prime</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                        </div>                    
+                    </div>
+                    <div class="fields">
+                        <div class='four wide field'>
+                            <div class='ui labeled input'>
+                                <div class='ui label'>Technician:</div>
+                                <select class="ui dropdown">
+                                    <option value="0">01</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                        </div>                    
+                    </div>
+                    <div class="fields">
+                        <div class='nine wide field'>
+                            <div class='ui labeled input'>
+                                <div class='ui label'>Indication:</div>
+                                <input type="text">
+                            </div>
+                        </div>                    
+                    </div>
+                    <div class="fields">
+                        <div class='four wide field'>
+                            <div class='ui labeled input'>
+                                <div class='ui label'>Image Quality:</div>
+                                <select class="ui labeled dropdown">
+                                    <option value="0">Good</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="column">
+                    <h4 class="ui top attached block header">Patient data</h4>
+                    <div class="ui bottom attached segment grid">
+                        <div class="four wide column">OHIP</div><div class="twelve wide column">12345689</div>
+                        <div class="four wide column">Last name</div><div class="twelve wide column">12345689</div>
+                        <div class="four wide column">First name</div><div class="twelve wide column">12345689</div>
+                        <div class="four wide column">DOB</div><div class="twelve wide column">12345689</div>
+                        <div class="four wide column">Gender</div><div class="twelve wide column">12345689</div>
+                        <div class="four wide column">Phone</div><div class="twelve wide column">12345689</div>
+                        <div class="four wide column">Ref. Doctor</div><div class="twelve wide column">12345689</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="ui bottom attached segment tab active" data-tab="echo">
+        <div class="ui bottom attached segment tab" data-tab="echo">
             <h4 class="ui top attached block header">Left Ventricle</h4>
             <div class="ui bottom attached segment">
-                <div class="fields">
+                <div class="five fields">
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>Grade:</div>
@@ -113,11 +186,6 @@
                         </div>
                     </div>
                     <div class='two wide field'>
-                        <div class='ui right labeled input'>
-                            <div class='ui label'>EF:</div>
-                            <input type="text" class="" />
-                            <div class='ui label basic'>%</div>
-                        </div>
                     </div>
                     <div class='two wide field'>
                         <div class='ui labeled input'>
@@ -127,7 +195,7 @@
                     </div>
 
                 </div>
-                <div class="fields">
+                <div class="four fields">
                     <div class='four wide field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>E/A:</div>
@@ -162,6 +230,30 @@
                         </div>
                     </div>
                 </div>
+                <div class="fields">
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>E/E':</div>
+                            <input type="text" class="" />
+                            <div class='ui label basic'>/</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>LVmass:</div>
+                            <input type="text" class="" />
+                        </div>
+                    </div>
+                    <div class='two wide field'>
+                        <div class='ui right labeled input'>
+                            <div class='ui label'>EF:</div>
+                            <input type="text" class="" />
+                            <div class='ui label basic'>%</div>
+                        </div>
+                    </div>
+
+                </div>
                 <div class="ui fluid labeled input">
                     <div class='ui label'>Comments:</div>
                     <input type="text">
@@ -188,10 +280,10 @@
                             <input type="text" class="" />
                         </div>
                     </div>
-                    <div class='four wide field'>
+                    <div class='four field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>AI:</div>
-                            <select class="ui dropdown">
+                            <select class="ui dropdown compact ">
                                 <option value="Mild">Mild</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -200,10 +292,10 @@
                             </select>
                         </div>
                     </div>
-                    <div class='four wide field'>
+                    <div class='four field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>AS:</div>
-                            <select class="ui dropdown">
+                            <select class="ui dropdown compact ">
                                 <option value="None">None</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -386,16 +478,23 @@
                             <div class='ui label basic'>mm/Hg</div>
                         </div>
                     </div>
-                    <div class='four wide field'>
+                    <div class='four field'>
                         <div class='ui labeled input'>
                             <div class='ui label'>PUL</div>
-                            <select class="ui dropdown">
+                            <select class="ui dropdown compact">
                                 <option value="Mild">Mild</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class='ui right labeled input'>
+                            <div class='ui label'>RAP:</div>
+                            <input type="text" class="" />
+                            <div class='ui label basic'>mm/Hg</div>
                         </div>
                     </div>
                 </div>
@@ -468,15 +567,206 @@
 
         </div>
         <div class="ui bottom attached segment tab" data-tab="wall">
-            Segment3
+            <h4 class="ui top attached block header">Wall Motion</h4>
+            <div class="ui bottom attached segment">
+                <div class="fields">
+                    <div class='two wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>ANT:</div>
+                        </div>
+                    </div>
+                     <div class='six wide field'>
+                        <div class="inline fields">
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="ANT" tabindex="0" class="hidden">
+                                    <label>H</label>
+                                </div>
+                                </div>
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="ANT" tabindex="0" class="hidden">
+                                    <label>A</label>
+                                </div>
+                                </div>
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="ANT" tabindex="0" class="hidden">
+                                    <label>D</label>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class="inline field">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" tabindex="0" class="hidden">
+                                <label>LV Global Disfuncion</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class='two wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>POSTLAT:</div>
+                        </div>
+                    </div>
+                     <div class='six wide field'>
+                        <div class="inline fields">
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="POSTLAT" tabindex="0" class="hidden">
+                                    <label>H</label>
+                                </div>
+                                </div>
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="POSTLAT" tabindex="0" class="hidden">
+                                    <label>A</label>
+                                </div>
+                                </div>
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="POSTLAT" tabindex="0" class="hidden">
+                                    <label>D</label>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class='two wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>INF:</div>
+                        </div>
+                    </div>
+                     <div class='six wide field'>
+                        <div class="inline fields">
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="INF" tabindex="0" class="hidden">
+                                    <label>H</label>
+                                </div>
+                                </div>
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="INF" tabindex="0" class="hidden">
+                                    <label>A</label>
+                                </div>
+                                </div>
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="INF" tabindex="0" class="hidden">
+                                    <label>D</label>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class='two wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>APEX:</div>
+                        </div>
+                    </div>
+                     <div class='six wide field'>
+                        <div class="inline fields">
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="APEX" tabindex="0" class="hidden">
+                                    <label>H</label>
+                                </div>
+                                </div>
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="APEX" tabindex="0" class="hidden">
+                                    <label>A</label>
+                                </div>
+                                </div>
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="APEX" tabindex="0" class="hidden">
+                                    <label>D</label>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class='two wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>SEPTUM:</div>
+                        </div>
+                    </div>
+                     <div class='six wide field'>
+                        <div class="inline fields">
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="SEPTUM" tabindex="0" class="hidden">
+                                    <label>H</label>
+                                </div>
+                                </div>
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="SEPTUM" tabindex="0" class="hidden">
+                                    <label>A</label>
+                                </div>
+                                </div>
+                                <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="SEPTUM" tabindex="0" class="hidden">
+                                    <label>D</label>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class='four wide field'>
+                        <div class="inline field">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" tabindex="0" class="hidden">
+                                <label>Paradoxical Septum</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class='one wide field'></div>   
+                    <div class='five wide field'>
+                        <div class='ui labeled input'>
+                            <div class='ui label'>CLOT:</div>
+                            <select class="ui dropdown">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='two wide field'></div>   
+                    <div class='four wide field'>
+                        <button class="ui button fluid">Reset Wall Motion</button>
+                    </div>
+                </div>
+                <div class="ui fluid labeled input">
+                    <div class='ui label'>Comment Wall Motion:</div>
+                    <input type="text">
+                </div>
+            </div>
         </div>
         <div class="ui bottom attached segment tab" data-tab="comments">
-            Segment4
+            <div class="ui form">
+                <div class="field">
+                    <textarea></textarea>
+                </div>
+            </div>
         </div>
         <form>
             <script>
                 $('.tabular.menu .item').tab();
                 $('.ui.dropdown').dropdown();
+                $('.ui.checkbox').checkbox();
+                $('.ui.radio.checkbox').checkbox();
             </script>
 </div>
 </body>
