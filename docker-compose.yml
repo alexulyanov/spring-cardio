@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  spring-cardio:
+    image: spring-cardio
+    build: .
+    ports:
+      - 3000
