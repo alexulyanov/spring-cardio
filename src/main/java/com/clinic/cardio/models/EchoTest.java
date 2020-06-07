@@ -12,7 +12,11 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "echotests")
 @Getter @Setter
-public class EchoTest extends BaseEntity{
+public class EchoTest {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -194,7 +198,11 @@ public class EchoTest extends BaseEntity{
 
 //  Enum field values END
 
-@Override
+    public boolean isNew() {
+        return this.id == null;
+    }
+
+    @Override
     public String toString() {
         return new ToStringCreator(this)
                 .append("id", this.getId()).append("new", this.isNew()).toString();

@@ -6,33 +6,40 @@ import lombok.Setter;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 import org.springframework.core.style.ToStringCreator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
 import java.util.*;
 
-
-enum Province{
-    BC("BC"),
-    ON("ON"),
-    QC("QC");
-
-    private final String displayName;
-    Province(String displayName) {
-        this.displayName = displayName;
-    }
-    public String getDisplayName() {
-        return displayName;
-    }
-}
 
 @Entity
 @Table(name = "patients")
 @Getter @Setter
-public class Patient extends Person {
+public class Patient {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "first_name")
+    @NotEmpty
+    private String firstName;
+
+    @Column(name = "last_name")
+    @NotEmpty
+    private String lastName;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "date_of_birth")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull
+    private LocalDate birthDate;
 
     @Column(name = "OHIP", unique = true)
     @NotEmpty
@@ -48,9 +55,7 @@ public class Patient extends Person {
     private String city;
 
     @Column(name = "province")
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    private Province province;
+    private String province;
 
     @Column(name = "postal_code")
     @NotEmpty
@@ -74,6 +79,10 @@ public class Patient extends Person {
         return this.echoTests;
     }
 
+    public boolean isNew() {
+        return this.id == null;
+    }
+
     protected void setEchoTestsInternal(Set<EchoTest> echoTests) {
         this.echoTests = echoTests;
     }
@@ -92,7 +101,6 @@ public class Patient extends Person {
         echoTest.setPatient(this);
     }
 
-    // TODO: Change attribute
     public EchoTest getEchoTest(String name) {
         return getEchoTest(name, false);
     }
