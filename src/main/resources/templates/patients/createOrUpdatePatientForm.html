@@ -1,7 +1,8 @@
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/navbar :: layout (~{::body},'patients')}">
+<html xmlns:th="https://www.thymeleaf.org">
 
 
 <body>
+  <div th:replace="fragments/header :: header">&nbsp;</div>
 
   <h2>Patient</h2>
   <form th:object="${patient}" class="form-horizontal" id="add-patient-form" method="post">
@@ -12,12 +13,12 @@
         th:replace="~{fragments/inputField :: input ('First Name', 'firstName', 'text')}" />
       <input
         th:replace="~{fragments/inputField :: input ('Last Name', 'lastName', 'text')}" />
-      <input
-        th:replace="~{fragments/selectField :: select ('Gender', 'gender', ${T(com.clinic.cardio.models.Gender).values()}) }" />
+<!--      <input-->
+<!--        th:replace="~{fragments/selectField :: select ('Gender', 'gender', 'text') }" />-->
       <input
         th:replace="~{fragments/inputField :: input ('Birth Date', 'birthDate', 'date')}" />
-      <input
-        th:replace="~{fragments/selectField :: select ('Province', 'province', ${T(com.clinic.cardio.models.Province).values()}) }" />
+<!--      <input-->
+<!--        th:replace="~{fragments/selectField :: select ('Province', 'province', 'text') }" />-->
       <input
         th:replace="~{fragments/inputField :: input ('Address', 'address', 'text')}" />
       <input
