@@ -1,4 +1,4 @@
-package com.clinic.cardio.models;
+package com.clinic.cardio.old.models;
 
 public class EchoTestEnums {
 

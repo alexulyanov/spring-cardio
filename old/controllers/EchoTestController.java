@@ -1,9 +1,9 @@
-package com.clinic.cardio.controllers;
+package com.clinic.cardio.old.controllers;
 
-import com.clinic.cardio.models.EchoTest;
-import com.clinic.cardio.models.Patient;
-import com.clinic.cardio.repositories.EchoTestRepository;
-import com.clinic.cardio.repositories.PatientRepository;
+import com.clinic.cardio.old.models.EchoTest;
+import com.clinic.cardio.old.models.Patient;
+import com.clinic.cardio.repository.EchoTestRepository;
+import com.clinic.cardio.repository.PatientRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;

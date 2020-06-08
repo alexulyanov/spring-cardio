@@ -1,7 +1,7 @@
-package com.clinic.cardio.controllers;
+package com.clinic.cardio.old.controllers;
 
-import com.clinic.cardio.models.Patient;
-import com.clinic.cardio.repositories.PatientRepository;
+import com.clinic.cardio.old.models.Patient;
+import com.clinic.cardio.repository.PatientRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

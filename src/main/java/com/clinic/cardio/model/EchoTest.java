@@ -1,28 +1,33 @@
-package com.clinic.cardio.models;
+package com.clinic.cardio.model;
 
-import com.clinic.cardio.models.EchoTestEnums.*;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.core.style.ToStringCreator;
+import com.clinic.cardio.model.EchoTestEnums.*;
+
+import com.fasterxml.jackson.annotation.*;
+import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
+@Data
 @Entity
+// TODO: Rename to "echo_tests"
 @Table(name = "echotests")
-@Getter @Setter
-public class EchoTest {
-
+public class EchoTest implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "patient_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "echoTests"})
     private Patient patient;
 
     @Column(name = "visit_date")
@@ -196,15 +201,23 @@ public class EchoTest {
     @Enumerated(EnumType.STRING)
     private TV tv;
 
-//  Enum field values END
 
     public boolean isNew() {
         return this.id == null;
     }
 
-    @Override
-    public String toString() {
-        return new ToStringCreator(this)
-                .append("id", this.getId()).append("new", this.isNew()).toString();
+    public Long getPatient_id(){
+        return patient.getId();
     }
+
+    @JsonIgnore
+    public Patient getPatient() {
+        return this.patient;
+    }
+
+    @JsonIgnore
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
 }
