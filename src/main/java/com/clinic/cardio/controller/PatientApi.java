@@ -1,9 +1,7 @@
 package com.clinic.cardio.controller;
 
 import com.clinic.cardio.exception.ResourceNotFoundException;
-import com.clinic.cardio.model.EchoTest;
 import com.clinic.cardio.model.Patient;
-import com.clinic.cardio.repository.EchoTestRepository;
 import com.clinic.cardio.repository.PatientRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -21,11 +18,9 @@ import java.util.Optional;
 public class PatientApi {
 
     private final PatientRepository patientRepository;
-    private final EchoTestRepository echoTestRepository;
 
-    public PatientApi(PatientRepository patientRepository, EchoTestRepository echoTestRepository) {
+    public PatientApi(PatientRepository patientRepository) {
         this.patientRepository = patientRepository;
-        this.echoTestRepository = echoTestRepository;
     }
 
     @GetMapping(path="/patients")
@@ -38,7 +33,7 @@ public class PatientApi {
     @PostMapping("/patients")
     public ResponseEntity<Patient> createPatient(@Valid @RequestBody Patient patient) throws URISyntaxException {
         Patient result = patientRepository.save(patient);
-        return ResponseEntity.created(new URI("/api/group/" + result.getId()))
+        return ResponseEntity.created(new URI("/api/patients/" + result.getId()))
                 .body(result);
     }
 
@@ -56,18 +51,9 @@ public class PatientApi {
     }
 
     @DeleteMapping("/patients/{id}")
-    public ResponseEntity<?> deleteGroup(@PathVariable Long id) {
+    public ResponseEntity<?> deletePatient(@PathVariable Long id) {
         patientRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
-
-    @GetMapping(path="/patients/{id}/echotests")
-    public ResponseEntity<?> getEchoTestsByPatient(@PathVariable Long id){
-        List<EchoTest> result = echoTestRepository.findEchoTestsByPatientId(id);
-
-
-        return ResponseEntity.ok(result);
-    }
-
 
 }

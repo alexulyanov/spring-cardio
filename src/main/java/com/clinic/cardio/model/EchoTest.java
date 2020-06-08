@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @Table(name = "echotests")
 public class EchoTest implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
@@ -27,7 +27,6 @@ public class EchoTest implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "echoTests"})
     private Patient patient;
 
     @Column(name = "visit_date")

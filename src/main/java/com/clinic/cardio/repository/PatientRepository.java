@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
-//    List<Patient> findAll();
     List<Patient> findByLastName(@Param("lastName") String lastName);
     List<Patient> findByOhip(@Param("ohip") String ohip);
     Optional<Patient> findById(@Param("id") Long id);
