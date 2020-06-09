@@ -3,8 +3,10 @@ package com.clinic.cardio.model;
 import lombok.Data;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -13,6 +15,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name = "patients")
+@Validated
 public class Patient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +34,7 @@ public class Patient implements Serializable {
     private LocalDate birthDate;
 
     @Column(name = "OHIP", unique = true)
+    @NotNull
     private String ohip;
 
     private String address;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
+import { Button, Container } from 'reactstrap';
 // import AppNavbar from './AppNavbar';
+import { Link, withRouter } from 'react-router-dom'
 import Pagination from "react-js-pagination";
 import BootstrapTable from 'react-bootstrap-table-next';
 
@@ -101,9 +102,21 @@ class PatientsList extends Component {
             return <p>Loading...</p>;
         }
 
+        const history = this.props.history;
+
+        const rowEvents = {
+            onClick: (e, row, rowIndex) => {
+                console.log(`clicked on row with index: ${rowIndex}`);
+                history.push('/patients/' + this.state.patientsList[rowIndex].id);
+            }
+        };
+
 
         return (
             <Container fluid>
+                <div className="float-right">
+                    <Button color="btn btn-large btn-success" style={{ marginBottom: 5 }} tag={Link} to="/patients/new">New Patient</Button>
+                </div>
                 <div className="table" style={{ marginTop: 50 }}>
                     <BootstrapTable
                         striped
@@ -111,6 +124,7 @@ class PatientsList extends Component {
                         keyField='id'
                         data={ this.state.patientsList }
                         columns={ this.state.columns }
+                        rowEvents={ rowEvents }
                     />
                 </div>
 
@@ -131,4 +145,4 @@ class PatientsList extends Component {
     }
 }
 
-export default PatientsList;
+export default withRouter(PatientsList);

@@ -5,6 +5,7 @@ mvnw
 mvnw.cmd
 cardio_db.trace.*
 .DS_Store
+node_modules
 
 
 ### IntelliJ IDEA ###
