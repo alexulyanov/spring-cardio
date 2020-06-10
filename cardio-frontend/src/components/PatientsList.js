@@ -4,6 +4,8 @@ import { Button, Container } from 'reactstrap';
 import { Link, withRouter } from 'react-router-dom'
 import Pagination from "react-js-pagination";
 import BootstrapTable from 'react-bootstrap-table-next';
+import EchoTestsList from "./EchoTestsList";
+import TablePagination from "@material-ui/core/TablePagination";
 
 
 class PatientsList extends Component {
@@ -12,9 +14,10 @@ class PatientsList extends Component {
         super(props);
         this.state = {
             patientsList: [],
-            activePage: 1,
+            activePage: 0,
             totalPages: null,
             itemsCountPerPage:null,
+            rowsPerPage: 25,
             totalItemsCount:null,
             isLoading: true,
             columns: [
@@ -58,17 +61,23 @@ class PatientsList extends Component {
 
     componentDidMount () {
         this.setState({isLoading: true});
-        this.fetchPatients(this.state.activePage);
+        this.fetchPatients(this.state.activePage, this.state.rowsPerPage);
     }
 
-    handlePageChange(pageNumber) {
+    handlePageChange(event, pageNumber) {
         this.setState({activePage: pageNumber});
-        this.fetchPatients(pageNumber);
+        this.fetchPatients(pageNumber, this.state.rowsPerPage);
 
     }
 
-    fetchPatients(page) {
-        fetch(`/api/patients?page=${page}&size=35`)
+    handleChangeRowsPerPage = (event) => {
+        this.setState({activePage: 0, rowsPerPage: parseInt(event.target.value)});
+        this.fetchPatients(0, parseInt(event.target.value));
+
+    };
+
+    fetchPatients(page, size) {
+        fetch(`/api/patients?page=${page}&size=${size}`)
             .then(response => response.json())
             .then(data => {
                 const totalPages = data.totalPages;
@@ -107,40 +116,55 @@ class PatientsList extends Component {
         const rowEvents = {
             onClick: (e, row, rowIndex) => {
                 console.log(`clicked on row with index: ${rowIndex}`);
-                history.push('/patients/' + this.state.patientsList[rowIndex].id);
+                // history.push('/patients/' + this.state.patientsList[rowIndex].id);
+
             }
         };
 
 
         return (
-            <Container fluid>
-                <div className="float-right">
-                    <Button color="btn btn-large btn-success" style={{ marginBottom: 5 }} tag={Link} to="/patients/new">New Patient</Button>
-                </div>
-                <div className="table" style={{ marginTop: 50 }}>
-                    <BootstrapTable
-                        striped
-                        hover
-                        keyField='id'
-                        data={ this.state.patientsList }
-                        columns={ this.state.columns }
-                        rowEvents={ rowEvents }
-                    />
-                </div>
+            <div>
+                <Container fluid>
+                    <div className="float-right">
+                        <Button color="btn btn-large btn-success" style={{marginBottom: 5}} tag={Link}
+                                to="/patients/new">New Patient</Button>
+                    </div>
+                    <div className="table" style={{marginTop: 50}}>
+                        <BootstrapTable
+                            striped
+                            hover
+                            keyField='id'
+                            data={this.state.patientsList}
+                            columns={this.state.columns}
+                            noDataIndication="Table is Empty"
+                            rowEvents={rowEvents}
+                        />
+                    </div>
 
-                <div className="d-flex justify-content-center">
-                    <Pagination
-                        hideNavigation
-                        activePage={this.state.activePage}
-                        itemsCountPerPage={this.state.itemsCountPerPage}
-                        totalItemsCount={this.state.totalItemsCount}
-                        pageRangeDisplayed={10}
-                        itemClass='page-item'
-                        linkClass='btn btn-light'
-                        onChange={this.handlePageChange}
-                    />
-                </div>
-            </Container>
+                    <div className="d-flex justify-content-center">
+                        {/*<Pagination*/}
+                        {/*    // hideNavigation*/}
+                        {/*    activePage={this.state.activePage}*/}
+                        {/*    itemsCountPerPage={this.state.itemsCountPerPage}*/}
+                        {/*    totalItemsCount={this.state.totalItemsCount}*/}
+                        {/*    pageRangeDisplayed={10}*/}
+                        {/*    itemClass='page-item'*/}
+                        {/*    linkClass='btn btn-light'*/}
+                        {/*    onChange={this.handlePageChange}*/}
+                        {/*/>*/}
+                        <TablePagination
+                            component="div"
+                            count={this.state.totalItemsCount}
+                            page={this.state.activePage}
+                            onChangePage={this.handlePageChange}
+                            // rowsPerPage={this.state.itemsCountPerPage}
+                            rowsPerPage={this.state.rowsPerPage}
+                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                        />
+                    </div>
+                </Container>
+                <EchoTestsList patientId={995}/>
+            </div>
         );
     }
 }

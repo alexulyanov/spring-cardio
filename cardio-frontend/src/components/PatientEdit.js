@@ -111,7 +111,8 @@ class PatientEdit extends Component {
                             </FormGroup>
                             <FormGroup className="col-md-1 mb-3">
                                 <Label for="gender">Gender</Label>
-                                <Input type="select" name="gender" id="gender" value={item.gender || 'Not Selected'} onChange={this.handleChange}>
+                                <Input type="select" name="gender" id="gender" value={item.gender || 'Not Selected'}
+                                       onChange={this.handleChange}>
                                     <option>Not Selected</option>
                                     <option>Male</option>
                                     <option>Female</option>

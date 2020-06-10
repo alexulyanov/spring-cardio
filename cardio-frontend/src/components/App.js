@@ -4,6 +4,7 @@ import '../css/App.css';
 import PatientsList from "./PatientsList";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PatientEdit from "./PatientEdit";
+import EchoTestsList from "./EchoTestsList";
 
 
 class App extends Component {
