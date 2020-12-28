@@ -3,8 +3,12 @@ package com.clinic.cardio.controller;
 import com.clinic.cardio.exception.ResourceNotFoundException;
 import com.clinic.cardio.model.Patient;
 import com.clinic.cardio.repository.PatientRepository;
+import net.kaczmarzyk.spring.data.jpa.domain.Like;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.And;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +28,11 @@ public class PatientApi {
     }
 
     @GetMapping(path="/patients")
-    public ResponseEntity<?> getAllPatients(Pageable pageable){
-        Page result = patientRepository.findAll(pageable);
-
+    public ResponseEntity<?> getAllPatients(Pageable pageable,
+                                            @And( {@Spec(path = "ohip", params = "ohip", spec = Like.class),
+                                                    @Spec(path = "lastName", params = "lastName", spec = Like.class),
+                                            }) Specification<Patient> spec) {
+        Page result = patientRepository.findAll(spec, pageable);
         return ResponseEntity.ok(result);
     }
 
